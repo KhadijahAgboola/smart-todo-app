@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "content": "Finish my report",
+        "completed": true
+    },
+    {
+        "id": 2,
+        "content": "Buy groceries",
+        "completed": false
+    }
+]
