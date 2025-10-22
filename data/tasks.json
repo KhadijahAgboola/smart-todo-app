@@ -1,12 +1,45 @@
 [
     {
         "id": 1,
-        "content": "Finish my report",
+        "content": "Review PRs every Monday   assigned:alex.com",
+        "tags": [
+            "work",
+            "gmail"
+        ],
+        "priority": null,
+        "due": null,
+        "assigned": "alex@gmail.com",
+        "time": null,
+        "duration": "1h",
+        "frequency": null,
         "completed": true
     },
     {
         "id": 2,
-        "content": "Buy groceries",
+        "content": "Call doctor tomorrow",
+        "tags": [
+            "personal"
+        ],
+        "priority": null,
+        "due": null,
+        "assigned": null,
+        "time": "2pm",
+        "duration": null,
+        "frequency": null,
+        "completed": false
+    },
+    {
+        "id": 3,
+        "content": "Complete project    assigned to alice",
+        "tags": [
+            "school"
+        ],
+        "priority": "high",
+        "due": "2025-10-20",
+        "assigned": null,
+        "time": null,
+        "duration": null,
+        "frequency": null,
         "completed": false
     }
 ]

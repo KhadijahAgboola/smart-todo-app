@@ -1,63 +1,42 @@
 import datetime     #this is necessary because of the timestamp
-from src.services.storage_service import Storage
+
 
 class Task:
     id = 1  
-    def __init__(self, content):
+    def __init__(self, content, tags=None, priority=None, due=None, assigned=None, time=None, duration=None, frequency=None):
         self.id=Task.id
         Task.id += 1
         self.content = content
+        self.tags=tags
+        self.priority=priority
+        self.due=due
+        self.assigned=assigned
+        self.time=time
+        self.duration=duration
+        self.frequency=frequency
         self.completed = False
         #self.created_at=datetime.datetime.now()     #this adds current timestamp to each note added
 
     
     def display(self):
-        status = "✔️ " if self.completed else "❌"
-        return f"------------------------------------------\n{status} ID: {self.id} {self.content}" #created at {self.created_at}
+        status = "✔️ " if self.completed else "⚪"
+        info = f"------------------------------------------\n{status} ID: {self.id} | {self.content}"
+        if self.tags:
+            info += f" | Tags: {', '.join(self.tags)}"
+        if self.priority:
+            info += f" | Priority: {self.priority}"
+        if self.due:
+            info += f" | Due: {self.due}"
+        if self.assigned:
+            info += f" | Assigned: {self.assigned}"
+        if self.time:
+            info += f" | Time: {self.time}"
+        if self.duration:
+            info += f" | Duration: {self.duration}"
+        if self.frequency:
+            info += f" | Frequency: {self.frequency}"
+        return info
 
-class TaskManagement:     #Initiating the Task Management
-    def __init__(self):
-        self.tasks=[]
-        self.storage=Storage()
-
-    def add_task(self, content):
-        task=Task(content)
-        self.tasks.append(task)     #adding all task to tasks
-        self.storage.save_tasks(self.tasks)
-    
-    def list_tasks(self):
-        for task in self.tasks:
-            print(task.display())
-
-    
-    def delete_task(self, id):     #defining the delete method to take note ID
-        for task in self.tasks:
-            if task.id == id:
-                self.tasks.remove(task)
-                print(f"------------------------------------------\nTask with ID {id} has been deleted.\n------------------------------------------")
-            else:
-                print(f"------------------------------------------\nNo task with ID  {id}\n------------------------------------------")
-        self.storage.save_tasks(self.tasks)
-
-
-    def update_task(self, id):
-        for task in self.tasks:
-            if task.id == id:
-                updated_task=input("Enter the update: ")
-                task=updated_task
-                print(f"------------------------------------------\nTask with ID {id} has been updated to .\n {task}")
-            else:
-                print(f"------------------------------------------\nNo task with ID {id}")
-        self.storage.save_tasks(self.tasks)
-                      
-    
-    def complete_task(self, id):
-        for task in self. tasks:
-            if task.id == id:
-                task.completed = True
-                self.storage.save_tasks(self.tasks)
-            print(task.display())
-        self.storage.save_tasks(self.tasks)
             
 
     '''def search_notes(self, keyword):
@@ -72,14 +51,3 @@ class TaskManagement:     #Initiating the Task Management
             for note in result:
                 print(note.display())'''
     
-#Use case
-todo = TaskManagement()
-todo.add_task("Finish my report")
-todo.add_task("Buy groceries")
-todo.list_tasks()
-'''delt=int(input("enter the id: "))
-todo.delete_task(delt)
-updt=int(input("enter the id: "))
-todo.update_task(updt)'''
-com= int(input("enter the id: "))
-todo.complete_task(com)
